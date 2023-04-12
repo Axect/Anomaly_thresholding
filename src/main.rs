@@ -19,7 +19,7 @@ fn main() {
     ics_test.shuffle(&mut thread_rng());
     let ics_picked_test = ics_test[0 .. MTEST].to_vec();
     for i in ics_picked_test {
-        eps_test[i] *= 10.0;
+        eps_test[i] *= 3.0;
     }
 
     let x = linspace(0, std::f64::consts::PI, N);
@@ -35,11 +35,13 @@ fn main() {
     // Ordinary 3-sigma rule
     let mean = l1.mean();
     let std = l1.sd();
+    println!("Mean: {:.4e}\tStd: {:.4e}", mean, std);
     let upper_bound = mean + 3.0 * std;
     let psqi = l1_test.iter().map(|&x| x < upper_bound).collect::<Vec<_>>();
 
     // Trimmed 3-sigma rule
     let (mean, std) = iqr_trimmed_mean_std(&l1);
+    println!("Mean: {:.4e}\tStd: {:.4e}", mean, std);
     let upper_bound_trimmed = mean + 3.0 * std;
     let psqi_trimmed = l1_test.iter().map(|&x| x < upper_bound_trimmed).collect::<Vec<_>>();
 
@@ -47,11 +49,13 @@ fn main() {
     let l1_signed = zip_with(|y, y_hat| y_hat - y, &y, &y_hat);
     let mean = l1_signed.mean();
     let std = l1_signed.sd();
+    println!("Mean: {:.4e}\tStd: {:.4e}", mean, std);
     let upper_bound_signed = mean + 3.0 * std;
     let psqi_signed = l1_test.iter().map(|&x| x < upper_bound_signed).collect::<Vec<_>>();
 
     // Not absolute trimmed 3-sigma rule
     let (mean, std) = iqr_trimmed_mean_std(&l1_signed);
+    println!("Mean: {:.4e}\tStd: {:.4e}", mean, std);
     let upper_bound_signed_trimmed = mean + 3.0 * std;
     let psqi_signed_trimmed = l1_test.iter().map(|&x| x < upper_bound_signed_trimmed).collect::<Vec<_>>();
 
