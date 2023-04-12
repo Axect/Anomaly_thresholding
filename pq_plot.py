@@ -101,7 +101,6 @@ with plt.style.context(["science", "nature"]):
     ax.plot(x, y, 'k-', label=r'$y$')
     ax.plot(x, y_up, 'k--', label=r'$y_{up}$')
     ax.plot(x, y_down, 'k--', label=r'$y_{down}$')
-    ax.legend()
     fig.savefig('ano_plot.png', dpi=300, bbox_inches='tight')
 
 # Plot
@@ -117,7 +116,6 @@ with plt.style.context(["science", "nature"]):
     ax.plot(x, y, 'k-', label=r'$y$')
     ax.plot(x, y_up, 'k--', label=r'$y_{up}$')
     ax.plot(x, y_down, 'k--', label=r'$y_{down}$')
-    ax.legend()
     fig.savefig('ano_t_plot.png', dpi=300, bbox_inches='tight')
 
 # Plot
@@ -133,7 +131,6 @@ with plt.style.context(["science", "nature"]):
     ax.plot(x, y, 'k-', label=r'$y$')
     ax.plot(x, y_up, 'k--', label=r'$y_{up}$')
     ax.plot(x, y_down, 'k--', label=r'$y_{down}$')
-    ax.legend()
     fig.savefig('ano_s_plot.png', dpi=300, bbox_inches='tight')
 
 # Plot
@@ -149,5 +146,4 @@ with plt.style.context(["science", "nature"]):
     ax.plot(x, y, 'k-', label=r'$y$')
     ax.plot(x, y_up, 'k--', label=r'$y_{up}$')
     ax.plot(x, y_down, 'k--', label=r'$y_{down}$')
-    ax.legend()
     fig.savefig('ano_st_plot.png', dpi=300, bbox_inches='tight')
